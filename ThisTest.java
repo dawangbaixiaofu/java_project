@@ -18,7 +18,7 @@ public class ThisTest
 	private int i = 10;
 	public static void main(String[] args)
 	{
-		ThisTest test = new ThisTest();
+		ThisTest test = new ThisTest();//静态方法中调用非静态方法必须进行实例化
 		test.this_test();
 	}
 
