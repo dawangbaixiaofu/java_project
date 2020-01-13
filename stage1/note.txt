@@ -40,9 +40,18 @@ classpath环境变量配置
 给类加载器ClassLoader指定执行.class文件路径；默认中有.这个当前路径
 
 
+java中的类
+一个java源文件可以定义多个class
+一个java源文件中public class 类不是必须存在；
+一个class会定义生成一个xxx.class字节码文件；
+一个java源文件当中定义公开的类的话，public class只能有一个，
+并且该类名称必须和java源文件名称一致。
 
 
 
+字面值
+	1,2.34,3,true,false,'abc',"abc"
+字符和字符串区别
 
 
 
