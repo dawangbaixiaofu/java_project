@@ -1,0 +1,67 @@
+Java程序的编译：
+JDK中自带的javac.exe命令进行java程序的编译
+javac在DOS命令窗口中使用
+命令格式：
+javac Java源文件的路径
+生成.class文件，可能会生成过个.class文件
+
+Java程序的运行：
+jdk中java.exe命令负责运行阶段
+在DOS窗口中使用
+命令格式：
+java 类名（不带后缀.class）
+
+example:java A
+java.exe 命令会启动java虚拟机（JVM），jvm
+会启动类加载器ClassLoader，ClassLoader回去
+硬盘上搜索A.class文件，找到文件后将字节码文件
+装载到JVM中。JVM将A.class字节码文件解释成
+二进制这样的数据。最后操作系统执行二进制和底层
+硬件平台进行交互。
+
+jdk jre jvm关系
+
+java development kit（包括jre）
+安装jdk的时候也可以独立安装jre
+java run environment（包括jvm）
+java virtual mechine
+
+JDK目录：
+jdk/bin:存放了很多命令。例如：javac.exe,java.exe
+
+配置Windows系统环境变量或者用户环境变量path
+把java.exe和javac.exe路径添加到windows Path环境变量
+Windows是如何搜索命令的？
+首先从当前路径下开始搜索，如果搜索不到的话从PATH环境变量
+下进行搜索，如果还是搜索不到就报错。
+
+
+classpath环境变量配置
+给类加载器ClassLoader指定执行.class文件路径；默认中有.这个当前路径
+
+
+java中的类
+一个java源文件可以定义多个class
+一个java源文件中public class 类不是必须存在；
+一个class会定义生成一个xxx.class字节码文件；
+一个java源文件当中定义公开的类的话，public class只能有一个，
+并且该类名称必须和java源文件名称一致。
+
+
+
+字面值
+	1,2.34,3,true,false,'abc',"abc"
+字符和字符串区别：
+
+
+
+
+
+
+
+
+
+
+
+
+
