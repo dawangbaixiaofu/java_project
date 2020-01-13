@@ -1,7 +1,7 @@
 public class ProjectOne
 {
-	String name;
-	int price;
+	private String name;
+	private int price;
 	//construct function
 	ProjectOne(String name,int price)
 	{
