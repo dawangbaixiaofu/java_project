@@ -1,0 +1,70 @@
+ArrayList集合框架
+import java.util.ArrayList;
+数组声明后，有容量的限制。
+为了解决数组的局限性，引入容器类的概念。 
+最常见的容器类就是ArrayList
+容器的容量"capacity"会随着对象的增加，自动增长
+
+ArrayList常用的方法：
+add
+contains
+get 获取指定位置的对象顶
+indexOf
+remove
+set用于替换指定位置的元素
+size
+toArray 把一个ArrayList对象转换为数组
+addAll 把另一个容器所有对象都加进来
+clear 清空一个ArrayList
+
+List 接口
+ArrayList实现了接口List;
+
+泛型 Generic
+不指定泛型的容器，可以存放任何类型的元素
+指定了泛型的容器，只能存放指定类型的元素以及其子类
+
+List<Hero> genericheros = new ArrayList<Hero>();
+通过尖括号指定泛型的容器只能放Hero类的对象
+
+
+容器中对象的遍历
+for
+interator 迭代器
+增强型的for循环
+
+
+其他的容器：
+	1.
+	FIFO（先进先出）Queue 队列
+	FILO（先进后出）Stack 栈
+	LinkedList 也是实现了接口Link
+	Deque双向列表
+
+	2.二叉树
+	构建二叉树
+	插入基本逻辑是，小、相同的放左边，大的放右边（与各个层的根节点相比）
+	遍历二叉树
+	二叉树的遍历分左序，中序，右序；--中序排序为从小到大的排序
+	二叉树排序和冒泡法和选择法相比的优点？
+	
+	3.HashMap的键值对
+	HashMap储存数据的方式是—— 键值对；值可以重复，键不可以重复
+
+	4.HashSet
+	Set中的元素，不能重复
+	Set中的元素，没有顺序。
+
+	5.Collection
+	Collection是Set List Queue和 Deque的接口
+
+	6.Collections
+	Collections是一个类，容器的工具类,就如同Arrays是数组的工具类
+
+
+
+
+
+
+
+
