@@ -1,14 +1,86 @@
+线程和进程的区别？
+
 并行：多个CPU同时执行多个任务，比如:多个人同时做不同的事
 并发：一个CPU（采用时间片）同时执行多个任务
-
-进程和线程的区别？
-进程包括线程
-进程：启动一个LOL.exe就叫一个进程。 接着又启动一个DOTA.exe，这叫两个进程。
-线程：线程是在进程内部同时做的事情，比如在LOL里，有很多事情要同时做，
-比如"盖伦” 击杀“提莫”，同时“赏金猎人”又在击杀“盲僧”，这就是由多线程来实现的。
-
-
 多线程即在同一时间，可以做多件事情。
+线程安全：在并发的情况之下，该代码经过多线程使用，线程的调度顺序不影响任何结果。
+	这个时候使用多线程，我们只需要关注系统的内存，cpu是不是够用即可。
+	反过来，线程不安全就意味着线程的调度顺序会影响最终结果，如不加事务的转账代码。
+同步：  Java中的同步指的是通过人为的控制和调度，保证共享资源的多线程访问成为线程安全，来保证结果的准确。
+
+线程的几个状态，和状态之间的转化：
+	new; blocked; runnable; running; wait blocked pool; lock blocked pool; interrupt
+	timed_waiting(有条件的等待)、TERMINATED
+
+	blocked（阻塞）什么时候处于阻塞状态？调用join() sleep()
+	阻塞状态分为两种：位于对象锁的阻塞状态和其他阻塞状态--由于执行了sleep方法或者调用了
+	其他线程的join方法，或者发出了I/O请求。
+	runnable状态
+	调用wait()线程进入wait blocked pool，知道notify() notifyAll()，线程被唤醒
+	进入锁定池（lock blocked pool），释放同步锁，线程进入Runnable状态
+	running状态的线程，加入同步锁（synchronized）使其进入lock blocked pool,
+	同步锁释放可进入可运行状态runnable 
+	yield可以让一个running状态的线程进入runnable状态
+	timed_waiting：线程调用了sleep(睡眠时间),wait(等待时间),join(等待时间),
+		LockSupport.parkNanos(等待时间)/LockSupport.parkUntil(等待时间)
+		方法之后所处的状态，在指定的时间内没有被唤醒或者等待线程没有结束，
+		会被系统自动唤醒，正常退出。
+
+
+
+监视器（monitor）
+在synchronized 范围内，监视器发挥作用
+synchronized关键词，可以用于代码快，也可以用于方法中。
+
+线程的同步（synchronized）
+	
+	原子操作
+	
+	由一组相关的操作完成，这些操作可能会操纵与其它的线程共享的资源，
+	为了保证得到正确的运算结果，一个线程在执行原子操作其间，应该采取其他的措施
+	使得其他的线程不能操纵共享资源。
+	
+	同步代码块
+	
+	为了保证每个线程能够正常执行原子操作，
+	Java引入了同步机制，具体的做法是在代表原子操作的程序代码
+	前加上synchronized标记，这样的代码被称为同步代码块。
+
+	同步锁
+	每个JAVA对象都有且只有一个同步锁，在任何时刻，最多只允许一个线程拥有这把锁。
+
+	释放对象的锁
+	1.执行完同步代码块就会释放对象的锁
+	2.在执行同步代码块的过程中，遇到异常而导致线程终止，也会释放对象的锁
+	3.在执行同步代码块的过程中，执行了所属对象的方法wait()，也会释放锁,对象放入等待池中
+
+	死锁
+	当一个线程等待由另一个线程持有的锁，而后者正在等待已被第一个线程持有的锁时，就会发生死锁。
+
+	线程之间的通信
+	Java.lang.Object类中提供了两个用于线程通信的方法
+	1.wait()执行了这个方法的线程释放对象的锁，JVM会把这个对象放入对象的等待池中，等待其他前程唤醒。
+	2.notify() 执行该方法的线程唤醒在对象的等待池中等待的一个线程，JVM从对象的等待池中
+		随机选择一个线程，把它转到对象的锁池中。
+	
+
+
+
+
+
+
+
+
+
+volatile
+多线程内存模式：main memory 、working memory
+处理数据的时候，线程会把值从main memory中load到working memory，完成操作后
+在save回去。涉及到的动作是load和save
+
+为什么在多线程中要使用volatile和final的变量？
+如果变量不是volatile或者是final的，一个线程修改了这个值，但是之后在某个线程
+中看到的是修改之前的值。
+
 
 
 线程的调度：
@@ -23,9 +95,9 @@
 
 
 创建多线程有3种方式，分别是:
-	1.继承线程类;
+	1.继承线程类;Thread类
 	2.实现Runnable接口;
-	3.匿名类
+	3.Callable接口;
 
 线程的相关API
 currentThread() 静态方法，返回执行当前代码的线程
@@ -66,3 +138,44 @@ isAlive
  * 4.将callable接口实现类的对象作为传递到FutureTask的构造器中，创建FutureTask的对象
  * 5.将FutureTask的对象作为参数传递到Thread类的构造器中，创建Thread对象，并调用start方法启动
     （通过FutureTask的对象调用方法get获取线程中的call的返回值）
+
+
+
+线程池
+线程和进程
+线程的状态以及转换
+多线程实现的3中基本方式
+多线程类
+java.util.concurrent多线程包
+
+线程池：
+	一个线程池包括以下四个基本组成部分：
+	
+Thread Pool（线程池管理器）
+Pool Worker（工作线程）
+任务接口（Task）
+任务队列（taskQueue）
+
+
+
+
+
+
+1.线程如何创建？
+新的概念 代码块    
+Final修饰的方法不可被重写，如果处于某种原因，不希望子类重写父类的某个方法，则可以使用final关键字修饰该方法。
+native关键字 原生态方法
+
+
+
+main函数是java运行启动的入口，它是由一个name叫main线程调用的；
+如果一个线程没有专门设置名称，程序会默认的将名称设置为Thread-num，num是从0开始累加的数字。
+
+synchronized同步代码块和同步方法的区别？
+
+synchronized 和 static synchronized区别？
+
+
+
+【reference】
+https://blog.csdn.net/javazejian/article/details/72828483
