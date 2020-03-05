@@ -1,0 +1,21 @@
+Tomcat 安装和webApps
+index.jsp文件
+虚拟路径：把web项目配置到webapps以外的路径上
+	1.在config文件夹下(这种方式需要重启Tomcat)
+	server.xml中
+	<Engine>
+	<Context 
+	docBase:实际路径
+	path:虚拟路径（绝对路径或者相对路径例如：/route相对路径指的是...tomcat/webapps/）
+	/>
+	</Engine>
+	
+	2.在config文件夹下catalina文件夹，新建文件
+	项目名.xml
+	<Context 
+	docBase:实际路径
+	path:虚拟路径（绝对路径或者相对路径例如：/route相对路径指的是...tomcat/webapps/）
+	/>
+
+虚拟主机：
+
