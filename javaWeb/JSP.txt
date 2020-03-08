@@ -1,0 +1,116 @@
+JSP
+
+配置虚拟路径
+	config文件夹下server.xml中进行配置；配置后需要重启Tomcat
+	在config文件夹下catalina文件夹下新建文件进行配置
+虚拟主机
+	server.xml 
+	<Engine name= "catalina" defaultHost="localhost">
+		<Host name="localhost" appBase="多个项目实际位置">
+			<Connector port="8080">
+				<Context docBase="具体项目绝对路径" path="相对路径">
+				</Context>
+			</Connector>
+		</Host>
+	</Engine>
+
+
+	 
+	在Windows中配置本地主机域名解析器--windows-system32--etc--hosts文件中进行配置
+	
+在本地hosts中找映射关系，这里映射到本地IP，寻找本地web服务器--server.xml找Engine的defaultHost
+通过<Host appBase="项目实际位置" name="www.test.com">
+			<context docBase="路径" path="">寻找（映射）到相应的项目地址
+
+
+JSP执行过程
+	浏览器第一次访问
+	jsp--java（servlet文件)-class位置
+	D:\Tomcat\apache-tomcat-8.5.51\work\Catalina\localhost\ROOT\org\apache\jsp
+	第二次访问直接访问class文件
+
+	jsp和servlet可以相互转换。由于servlet文件较为复杂，可以使用jsp
+
+Eclipse中建立JSP项目配置
+请求转发和重定向
+
+JSP页面元素：
+脚本
+<%   %>	java代码；局部变量
+<%!  %> 全局变量；方法 public String name; public void init(){}
+<%=  %> 输出表达式，不需要;结尾
+
+指令：
+<%@ page  >
+page指令属性
+language:jsp页面使用的脚本语言
+import:导入包、类
+pageEncoding:jsp文件自身编码 jsp-->servlet
+contentType:浏览器解析jsp编码
+
+注释：
+HTML注释，java注释，jsp注释
+<!--html注释  -->
+// /* */
+<%--jsp注释 --%>
+
+JSP内置对象 9大类内置对象（自带，不需要new也能使用的对象)
+out	输出对象，向客户端输出内容
+
+
+request	请求对象：存储客户端向服务端发送的请求消息
+method；
+String getParameter(String name)
+String[] getParameterValues(String name)
+void setCharacterEncoding("编码格式utf-8"):设置请求编码
+getRequestDispatcher("b.jsp").forward(request,reponse);请求转发的方式跳转页面A-->B
+ServletContext getServerContext()：获取项目的ServeletContext对象
+
+表单html中的form表单
+get和post提交方式区别
+get信息显示在地址栏上，post不会
+get在地址栏上能够容纳的信息量较小，且不安全。较大文件使用post
+请求方式编码问题
+
+例子：注册register
+
+reponse
+method：
+void addCookie(Cookie cookie)；服务端向客户端增加cookie对象
+void sendRedirect(String location) throws IOException;页面跳转的一种方式（重定向）
+void setContentType(String type);设置服务端响应编码；
+
+例子：登陆
+login.jsp-->check.jsp进行检查
+
+请求转发和重定向的区别：
+地址栏是否改变，请求转发不变。重定向会改变
+是否保留第一次请求时的数据	请求转发会保留，重定向不会保留
+请求次数	1次		2次
+跳转发生的位置	服务端		客户端发出的第二次跳转
+
+session	（服务端）
+Cookie	（客户端，不是内置对象）
+cookie是服务端产生的，发送给客户端保存。
+相对于本地缓存的作用
+作用：提高访问服务端的效率，当时安全性较差。
+cookie是key=value组成
+javax.servlet.http.Cookie类产生
+public Cookie(String key,String value)
+String getName()
+String getValue()
+void setMaxAge(int expiry)最大有效期（秒）
+
+服务端发送cookie对象给客户端：
+response.addCookie(Cookie cookie)
+页面跳转（转发、重定向）
+客户端获取cookie
+request.getCookies();
+不能直接获取某一个单一cookie对象，只能获取所有的对象
+
+
+pageContext
+application
+config
+page
+exeception
