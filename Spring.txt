@@ -1,0 +1,44 @@
+springMVC,struts2,spring,mybatis,hibernate
+struts1/2,Spring/mvc/boot/cloud,Hibernate/MyBatis
+
+年代没那么久远的就用 spring + springmvc + mybatis  （ssm)
+SpringBoot + JPA / Mybatis + SpringSecurity / Shiro + vue.js / React（前端）
+
+mybatis是数据访问架构
+
+SpringBoot所需要的基础知识：
+Spring + Maven
+
+第一天；spring框架的概述和spring中基于xml的ioc配置
+Spring的两大核心：
+	IOC inverse of control 反转控制
+	AOP aspect oriented programming 面向切面编程
+	展现层：Spring MVC
+	持久层：Spring JDBC
+什么是程序间的耦合？
+程序间的依赖关系
+	类之间的依赖
+	方法见的依赖
+	解耦：降低程序之间的依赖关系
+	解耦的思路：使用反射创建对象，要避免使用new关键字。
+
+java三层架构：业务层、持久层、变现层
+
+
+Interface
+	账户的业务层接口
+	IAccountService
+		/**
+		*模拟保存账户
+		*/
+		void saveAccount();
+	账户的持久层接口
+	IAccountDao
+		void saveAccount();
+
+
+
+第二天：spring中基于注解的IOC和IOC案例
+第三天：spring中的AOP和基于XML以及注解的AOP配置
+第四天：spring中的JDBC以及spring事务控制
+

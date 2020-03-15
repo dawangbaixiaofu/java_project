@@ -1,0 +1,39 @@
+from the book thinking in java（Java编程思想）
+upcasting--向上转型?
+
+单根继承？
+在Java中所有的类最终都是继承自单一的类。这个终极的类叫做Object
+OOP(Object oriented programming) 面向对象程序设计
+垃圾回收器？
+
+容器？
+这个对象类型是持有对其他对象的引用。
+Java中的容器：list，Map, Set, 队列，树，堆栈
+
+向下转型？
+向上转型？
+
+参数化类型机制？
+在Java中被称为是范型。
+syntax:
+ArrayList<Shape> shapes = new ArrayList<Shape>();
+通过一对尖括号中间包含类型信息。
+
+对象的创建和生命期
+动态内存分配方式
+
+Java中的单根继承机制和垃圾回收器使得其较C++编程要简单的多。
+
+Chapter 2 
+everything is object!
+
+使用引用操纵对象（在内存中操纵元素的方式）
+reference
+创建的引用放在什么地方？寄存器、堆栈、堆、常量存储、非RAM存储
+
+特例：基础类型 包装器类型
+包装器类型可以创建一个非基础类的对象，用来表示对应的基础类型。
+
+Java中的数组
+
+
