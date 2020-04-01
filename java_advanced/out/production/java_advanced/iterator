@@ -1,0 +1,9 @@
+迭代器方法：
+    hasNext() 如果仍有元素可以迭代，返回true
+    迭代器最初并没有指向第一个元素
+    next()  让迭代器前进一位，并返回指向的元素
+    remove()
+
+    当集合对象结构发生改变的时候，需要重新获取迭代器。
+    否则会异常java.util.ConcurrentModificationException
+    但是可以使用迭代器方法remove()删除迭代器指向的当前元素。

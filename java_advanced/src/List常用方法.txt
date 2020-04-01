@@ -1,0 +1,7 @@
+List接口特有的常用的方法
+void add(int index, E element)
+E get(int index)
+int indexOf(Object 0)
+int lastIndexOf(Object 0)
+Object remove(int index)
+Object set(int index,Object element)

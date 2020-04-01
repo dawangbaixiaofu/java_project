@@ -1,0 +1,9 @@
+void clear()
+boolean containsKey(Object key)
+boolean containsValue(Object value)
+Set<Map.Entry<K,V>> entrySet() 返回此映射中包含的映射关系的set试图
+Object get(Object key) 通过key获取value
+Set keySet() 获取Map中所有的key
+Object remove(Object key)
+int size()
+Collection<v> values()

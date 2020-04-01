@@ -11,6 +11,7 @@ public class CollectionIterator01 {
         c.add("abc");
         c.add(100);
         c.add("def");
+        System.out.println(c);
         String s1 = new String("abc");
         String s2 = new String("def");
         String s3 = new String("abc");
@@ -26,7 +27,10 @@ public class CollectionIterator01 {
         while (ite.hasNext())
         {
             System.out.println(ite.next());
+            //可以使用迭代器进行删除，如果集合对象结构发生变化，需要重新生成一个迭代器
+            ite.remove();
         }
+        System.out.println(c);
 
     }
 
