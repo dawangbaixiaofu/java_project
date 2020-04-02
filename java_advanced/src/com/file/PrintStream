@@ -1,0 +1,15 @@
+PrintStream 标准输出流，默认打印到控制台，以字节方式
+PrintWriter 以字符方式
+
+construct method:
+PrintStream(OutputStream)
+
+System.out 是PrintSream类型
+PrintStream ps = System.out;
+ps.println("sda");
+method:
+println
+print
+
+//改变输出方向
+System.setOut(new PrintStream(new FileOutputStream("path")));

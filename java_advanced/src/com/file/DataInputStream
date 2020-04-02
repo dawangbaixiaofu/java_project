@@ -1,0 +1,30 @@
+DataInputStream
+DataOutputStream
+DataReader
+DataWriter
+
+DataOutputStream:(数据字节输出流)
+father:FilterOutputStream
+super:OutputStream
+
+可以带着数据类型写进文件
+
+construct method:
+DataOutputStream(OutputStream )
+
+method: void write()
+
+
+DataInputStream
+construct method:DataInputStream(InputStream)
+method:
+读取DataOutputStream输出文件中的内容的时候，
+必须知道数据顺序和格式
+byte b = dis.readByte();
+short s = dis.readShort();
+int i = dis.readInt();
+long l = dis.readLong();
+float f = dis.readFloat();
+double d = dis.readDouble();
+boolean b = dis.readBoolean();
+char c = dis.readChar();

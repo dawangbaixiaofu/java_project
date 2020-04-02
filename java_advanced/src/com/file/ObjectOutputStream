@@ -1,0 +1,39 @@
+ObjectOutputStream
+ObjectInputStream
+
+序列化和反序列化
+java.io.ObjectInputStream;序列化java对象到硬盘(Serial)
+java.io.ObjectOutputStream;将硬盘中数据反序列化到JVM内存(DeSerial)
+
+construct method:
+ObjectOutputStream(OutputStream )
+
+method:
+writeObject(Object )
+Object 必须实现Serializable接口
+Serializable没有任何方法：这样的接口叫做是“标识”接口。
+这样的接口还有java.lang.Cloneable等
+如果对象实现了标识接口，会对他进行特殊的待遇。
+会给该类添加一个属性：static final long serialVersionUID=
+
+
+反序列化(反序列化的时候需要创建对象的类文件代码)
+method:
+Object readObject()
+
+序列化版本号
+
+如果对象实现了Serializable接口标识接口，会对他进行特殊的待遇。
+会给该类添加一个属性：static final long serialVersionUID=
+当反序列化的时候，修改了创建对象的类文件内容。重新编译的时候系统
+会重新给创建对象的类一个新的序列化版本号。导致序列化版本号不一致，
+不能进行反序列化。
+错误提示：java.io.InvalidClassException:User;local class incompatible:stream
+classdesc serialVersionUI = ....,local class serialVersionUID=...
+
+
+解决方法：
+    不让系统自动生产，自己写一个序列化版本号。
+static final long serialVersionUID=给一个固定值
+
+如果不想对象的某个属性参加序列化，需要在属性声明的时候添加transient关键字

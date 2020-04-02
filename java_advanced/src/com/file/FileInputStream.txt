@@ -1,0 +1,24 @@
+FileInputStream
+construct method
+FileInputStream(String filePath)
+methods:
+    int read() 每次读取文件中一个字节（8个二进制)
+    返回值是-1表示读取结束标志
+    读取英文的时候，可以读取完整a 为97
+    但是中文的时候，只能读取半个字符，一个中文字符占两个字节
+    缺点：频繁的访问硬盘，对磁盘伤害较大
+    int read(byte[] bytes)
+    每次读取多个字节到内存中，现在内存中创建一个byte数组
+    需要指定这个byte数组的长度。把每次读取的内容放到byte数组中去
+    byte[] bytes = new byte[length]
+    int f.read(bytes);
+    String str = new String(bytes,off,len)把字节数组转换为字符
+
+
+    返回值是每次读取了多少个字节。
+    -1表示结束
+    int available()
+    返回流中剩余的估计字节数
+    skip(int ) 跳过去int个字节不读取
+
+

@@ -1,0 +1,47 @@
+BufferedInputStream
+BufferedOutputStream
+BufferedReader
+BufferedWriter
+
+
+BufferedReader
+father:Reader
+construct method:BufferedReader(Reader in,int sz)
+流根据出现的位置，分为包装流或者处理流 和 节点流
+FileReader fr = new FileReader("path");
+BufferedReader br = new BufferedReader(fr);
+关闭的时候，只需要关闭最外层的包装流
+br.close();(装饰者设计模式)
+//装饰者模式 对已有的类型进行扩展
+把fr作为参数进入BufferedReader中，重写方法，可以调用fr.method()。
+所以关闭流的时候，只需要关闭装饰者流就可以了。
+
+
+
+
+
+
+String readline() 为null表示结束。读取一行，但是读取内容不带换行符
+接受键盘的输入:
+static InputStream System.in 标准输入流
+Static PrintStream System.out 标准输出流
+
+BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+String str = br.readline();
+System.out.println(str);
+
+转换流
+InputStreamReader把字节流转化为字符流
+construct method：InputStreamReader(InputStream fis)
+
+
+BufferedWriter
+super:Writer
+construct method:BufferedWriter(Writer )
+method:
+void write(char[] chars,off,len)
+void write(String str,off,len)
+void write(int n)
+void newLine() 写入一个新行
+flush()
+close()

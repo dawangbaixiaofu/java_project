@@ -1,0 +1,20 @@
+FileReader
+只能读取纯文本
+father: InputStreamReader
+超类：Reader
+
+char[] chars = new char[512] 1kb
+int read(char[] chars)
+
+将字符数组转化为字符串
+new String(chars,off,len)
+
+
+FileWriter
+father:OutputStreamWriter
+超类：Writer
+construct method:FileWriter(String name,boolean append)
+void write(char[] chars,off,len)
+void write(String str)
+刷新
+flush()

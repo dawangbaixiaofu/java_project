@@ -1,0 +1,6 @@
+https://blog.csdn.net/qq_24298751/article/details/102717351
+1.JS如何判断一组数字是否连续
+
+需要知道JS的语法
+
+2.报数游戏

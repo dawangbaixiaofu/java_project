@@ -1,0 +1,11 @@
+construct method:
+FileOutputStream(String name,boolean append)
+append表示按照追加的形式写入文件中。
+
+
+void write(byte[] bytes)
+void write(byte[] bytes,off,len)
+void write(int)
+
+将字符串转化为byte数组
+byte[] bytes = "".getBytes()
